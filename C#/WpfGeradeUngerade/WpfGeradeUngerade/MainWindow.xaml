@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfGeradeUngerade.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfGeradeUngerade"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1200">
+    <Grid>
+        <Label x:Name="lblTitle" Content="Gerade oder ungerade?" HorizontalAlignment="Left" Height="105" Margin="82,38,0,0" VerticalAlignment="Top" Width="1025" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" FontWeight="Bold" Background="#99DF29DF" BorderBrush="#FFDF29DE" BorderThickness="5,5,5,5"/>
+        <Label x:Name="lblInput" Content="Zahl:" HorizontalAlignment="Left" Height="54" Margin="336,218,0,0" VerticalAlignment="Top" Width="149" Background="#7FDF29DF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="SemiBold"/>
+        <TextBox x:Name="txtZahl" HorizontalAlignment="Left" Height="55" Margin="585,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" BorderBrush="#FFDF29DF" BorderThickness="7,7,7,7" FontSize="24" FontWeight="SemiBold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="btnResult" Content="Verrat mir die Lösung!" HorizontalAlignment="Center" Height="63" Margin="0,362,0,0" VerticalAlignment="Top" Width="528" Background="#7FDF29DF" BorderBrush="#FFDF29DF" BorderThickness="4,4,4,4" FontWeight="SemiBold" FontSize="24" Click="btnResult_Click"/>
+        <Label x:Name="lblResult" Content="" HorizontalAlignment="Center" Height="96" Margin="0,390,0,0" VerticalAlignment="Top" Width="793" Background="#E5DF29DF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="22" Visibility="Collapsed"/>
+
+    </Grid>
+</Window>
