@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>Flugobjekte</title>
+        <link href="Design_Lfz.css" rel="stylesheet">
+
+
+        <script>
+
+            class Luftfahrzeug
+            {
+                constructor(m,k)
+                {
+                    this.marke = m;
+                    this.kennung = k;
+                }
+
+                /*fliegen(j)
+                {
+                    var bez = "am Boden";
+
+                    if(j=="ja")
+                    {
+                        bez = "fliegt";
+                    }
+
+                    if(j=="nein")
+                    {
+                        bez = "fliegt nicht";
+                    }
+
+                    if(j=="start")
+                    {
+                        bez = "startet";
+                    }
+
+                    if(j=="landung")
+                    {
+                        bez = "landet";
+
+                    }
+
+                    return bez;
+                }*/
+            }
+
+
+            class Flugzeug extends Luftfahrzeug  // Erbklasse
+            {
+                constructor(m,k,s)
+                {
+                    super(m,k);
+                    this.spann = s;
+                }
+            }
+
+        </script>
+
+
+        <script>
+
+            var objList = [];
+            var check = 0;
+
+            function Radio1_Checked()
+            {
+                document.getElementById("idLblSpann").style.visibility = "visible";
+                document.getElementById("idSpann").style.visibility = "visible";
+                check = 1;
+            }
+
+
+            function Radio2_Checked() 
+            {
+                document.getElementById("idLblSpann").style.visibility = "hidden";
+                document.getElementById("idSpann").style.visibility = "hidden";
+                check = 0;
+            }
+
+
+            function Objekt_Erstellen()
+            {
+                var marke = document.getElementById("idMarke").value;
+                var kennung = document.getElementById("idKenn").value;
+                console.log(check);
+
+                if(check === 1)
+                {
+                    var spann = document.getElementById("idSpann").value;
+                    var Flz = new Flugzeug (marke, kennung, spann);
+                    document.getElementById("idAusgabe").value = Flz.marke + " " + Flz.kennung + " " + Flz.spann;
+                    objList.push(Flz);
+                    createNewRow(Flz,objList.length);
+                }
+            
+
+                if(check === 0)
+                {
+                    var Lfz = new Luftfahrzeug(marke, kennung);
+                    document.getElementById("idAusgabe").value = Lfz.marke + " " + Lfz.kennung;
+                    objList.push(Lfz);
+                    createNewRow(Lfz, objList.length);
+                }
+
+                document.getElementById("idMarke").value = "";
+                document.getElementById("idKenn").value = "";
+                document.getElementById("idSpann").value = "";   
+            }
+
+
+            function createNewRow(obj,index) 
+            {
+                var table = document.getElementById("idTable");
+                var row = document.createElement("tr");
+                row.id = "idrow" + index.toString;
+
+                var tdMarke = document.createElement("td");
+                tdMarke.innerHTML = obj.marke;
+                var tdKenn = document.createElement("td");
+                tdKenn.innerHTML = obj.kennung;
+                var tdSpann = document.createElement("td");
+                tdSpann.innerHTML = obj.spann || "";
+
+                row.appendChild(tdMarke);
+                row.appendChild(tdKenn);
+                row.appendChild(tdSpann);
+                
+                table.appendChild(row); 
+            }
+
+
+            function Liste_Ausgeben()
+            {
+                document.getElementById("bereich3").style.visibility = "visible";
+                document.getElementById("idAusgabe").value = "";
+            }
+
+
+            function closeDiv() 
+            {
+                document.getElementById("bereich3").style.visibility = "collapse";
+            }
+
+        </script>
+
+    </head>
+
+
+    <body>
+
+        <header>Luftfahrzeuge</header>
+        
+        <div id="bereich1">
+
+            <form action="" method="post">
+                <label id="idLblMarke" >Marke: </label>
+
+                <br>
+
+                <input type="text" id="idMarke">
+
+                <br>
+
+                <label id="idLblKenn">Kennzeichnung: </label>
+
+                <br>
+
+                <input type="text" id="idKenn">
+
+                <br><br>
+
+                <div class="radio">
+                    <input id="radio-1" name="radio" type="radio" onclick="Radio1_Checked()">
+                    <label for="radio-1" class="radio-label">Flugzeug</label>
+                </div>
+                
+                <div class="radio">
+                    <input id="radio-2" name="radio" type="radio" onclick="Radio2_Checked()">
+                    <label  for="radio-2" class="radio-label">Luftfahrzeug</label>
+                </div>
+
+                <br>
+
+                <label id="idLblSpann">Spannweite: </label>
+                <input type="text" id="idSpann">
+
+                <br>
+                
+            </form>
+        </div>
+
+        <div id="bereich2">
+
+            <form>
+                <input type ="button" class="myButton" id="idButton" value="Objekt erstellen" onclick="Objekt_Erstellen()">
+
+                <br>
+                
+                <input type="button" class="myButton" id="idButtonListe" value="Liste ausgeben" onclick="Liste_Ausgeben()">
+
+                <br>
+
+                <input type="text" id="idAusgabe" readonly>
+            </form>
+        </div>
+
+        <div id="bereich3">
+            <table id="idTable">
+                <th>Marke</th><th>Kennung</th><th>Spannweite</th>
+            </table>
+
+            <button id="idClose" class="myButton" onclick="closeDiv()">Schließen</button>
+        </div>
+
+        <div id="idStreifen1" class="myStripe"></div>
+    
+        <div id="idStreifen2" class="myStripe"></div>
+
+        <div id="idStreifen3" class="myStripe"></div>
+
+        <div id="idStreifen4" class="myStripe"></div>
+
+        <img src="Lufthansa3.jpg" alt="Lufthansa Logo" id="idImage">
+
+    </body>
+</html>
